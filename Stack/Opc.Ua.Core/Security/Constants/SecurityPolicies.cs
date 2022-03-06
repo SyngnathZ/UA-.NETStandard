@@ -434,10 +434,10 @@ namespace Opc.Ua
                 }
             }
 
-            throw ServiceResultException.Create(
-                StatusCodes.BadSecurityChecksFailed,
-                "Unexpected security policy Uri: {0}",
-                securityPolicyUri);
+            // throw ServiceResultException.Create(
+            //     StatusCodes.BadSecurityChecksFailed,
+            //     "Unexpected security policy Uri: {0}",
+            //     securityPolicyUri);
         }
         #endregion
     }

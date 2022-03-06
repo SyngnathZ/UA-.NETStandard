@@ -87,7 +87,7 @@ namespace Opc.Ua.Client.ComplexTypes
             PropertyInfo.SetValue(o, v);
         }
 
-        /// <inheritdoc cref="PropertyInfo.PropertyType"/>
+        /// <inheritdoc cref="System.Reflection.PropertyInfo.PropertyType"/>
         public Type PropertyType => PropertyInfo.PropertyType;
 
         /// <inheritdoc cref="StructureFieldAttribute.IsOptional"/>

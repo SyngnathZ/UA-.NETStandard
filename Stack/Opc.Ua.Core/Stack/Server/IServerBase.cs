@@ -31,11 +31,11 @@ namespace Opc.Ua
         /// <value>The object that combines the status code and diagnostic info structures.</value>
         ServiceResult ServerError { get; }
 
-        /// <summary>
-        /// Returns the endpoints supported by the server.
-        /// </summary>
-        /// <returns>Returns a collection of <see cref="EndpointDescription"/> objects.</returns>
-        EndpointDescriptionCollection GetEndpoints();
+        // /// <summary>
+        // /// Returns the endpoints supported by the server.
+        // /// </summary>
+        // /// <returns>Returns a collection of <see cref="EndpointDescription"/> objects.</returns>
+        // EndpointDescriptionCollection GetEndpoints();
 
         /// <summary>
         /// Schedules an incoming request.
