@@ -2,7 +2,7 @@
  * Copyright (c) 2005-2020 The OPC Foundation, Inc. All rights reserved.
  *
  * OPC Foundation MIT License 1.00
- * 
+ *
  * Permission is hereby granted, free of charge, to any person
  * obtaining a copy of this software and associated documentation
  * files (the "Software"), to deal in the Software without
@@ -11,7 +11,7 @@
  * copies of the Software, and to permit persons to whom the
  * Software is furnished to do so, subject to the following
  * conditions:
- * 
+ *
  * The above copyright notice and this permission notice shall be
  * included in all copies or substantial portions of the Software.
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
@@ -61,7 +61,7 @@ namespace Quickstarts.ConsoleReferencePublisher
                     { "u|udp_uadp", "Use UDP with UADP encoding Profile", v => useUdpUadp = v != null },
                     { "url|publisher_url=", "Publisher Url Address", v => publisherUrl = v},
                 };
-            
+
             try
             {
                 IList<string> extraArgs = options.Parse(args);
@@ -99,7 +99,7 @@ namespace Quickstarts.ConsoleReferencePublisher
                     // set default UDP Publisher Url to local multi-cast if not sent in args.
                     if (string.IsNullOrEmpty(publisherUrl))
                     {
-                        publisherUrl = "opc.udp://239.0.0.1:4840";
+                        publisherUrl = "opc.udp://127.0.0.1:4840";
                     }
 
                     // Create configuration using UDP protocol and UADP Encoding
@@ -125,7 +125,7 @@ namespace Quickstarts.ConsoleReferencePublisher
                         // Create configuration using MQTT protocol and JSON Encoding
                         pubSubConfiguration = CreatePublisherConfiguration_MqttJson(publisherUrl);
                         Console.WriteLine("The PubSub Connection was initialized using MQTT & JSON Profile.");
-                    }                    
+                    }
                 }
 
                 // Create the UA Publisher application using configuration file
@@ -226,7 +226,7 @@ namespace Quickstarts.ConsoleReferencePublisher
             dataSetWriter1.DataSetFieldContentMask = (uint)DataSetFieldContentMask.RawData;
             dataSetWriter1.DataSetName = "Simple";
             dataSetWriter1.KeyFrameCount = 1;
-            UadpDataSetWriterMessageDataType uadpDataSetWriterMessage = new UadpDataSetWriterMessageDataType() {               
+            UadpDataSetWriterMessageDataType uadpDataSetWriterMessage = new UadpDataSetWriterMessageDataType() {
                 NetworkMessageNumber = 1,
                 DataSetMessageContentMask = (uint)(UadpDataSetMessageContentMask.Status | UadpDataSetMessageContentMask.SequenceNumber),
             };
@@ -242,7 +242,7 @@ namespace Quickstarts.ConsoleReferencePublisher
             dataSetWriter2.DataSetFieldContentMask = (uint)DataSetFieldContentMask.RawData;
             dataSetWriter2.DataSetName = "AllTypes";
             dataSetWriter2.KeyFrameCount = 1;
-            uadpDataSetWriterMessage = new UadpDataSetWriterMessageDataType() {               
+            uadpDataSetWriterMessage = new UadpDataSetWriterMessageDataType() {
                 NetworkMessageNumber = 1,
                 DataSetMessageContentMask = (uint)(UadpDataSetMessageContentMask.Status | UadpDataSetMessageContentMask.SequenceNumber),
             };
@@ -301,7 +301,7 @@ namespace Quickstarts.ConsoleReferencePublisher
             string brokerMetaData = "$Metadata";
 
             #region Define WriterGroup1 - Json
-            
+
             WriterGroupDataType writerGroup1 = new WriterGroupDataType();
             writerGroup1.Name = "WriterGroup 1";
             writerGroup1.Enabled = true;

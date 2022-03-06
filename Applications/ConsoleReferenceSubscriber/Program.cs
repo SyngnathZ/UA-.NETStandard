@@ -2,7 +2,7 @@
  * Copyright (c) 2005-2020 The OPC Foundation, Inc. All rights reserved.
  *
  * OPC Foundation MIT License 1.00
- * 
+ *
  * Permission is hereby granted, free of charge, to any person
  * obtaining a copy of this software and associated documentation
  * files (the "Software"), to deal in the Software without
@@ -11,7 +11,7 @@
  * copies of the Software, and to permit persons to whom the
  * Software is furnished to do so, subject to the following
  * conditions:
- * 
+ *
  * The above copyright notice and this permission notice shall be
  * included in all copies or substantial portions of the Software.
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
@@ -108,7 +108,7 @@ namespace Quickstarts.ConsoleReferenceSubscriber
                     // set default UDP Subscriber Url to local multicast if not sent in args.
                     if (string.IsNullOrEmpty(subscriberUrl))
                     {
-                        subscriberUrl = "opc.udp://239.0.0.1:4840";
+                        subscriberUrl = "opc.udp://127.0.0.1:4840";
                     }
 
                     // Create configuration using UDP protocol and UADP Encoding
@@ -535,7 +535,7 @@ namespace Quickstarts.ConsoleReferenceSubscriber
             dataSetReaderAllTypes.Enabled = true;
             dataSetReaderAllTypes.DataSetFieldContentMask = (uint)DataSetFieldContentMask.RawData;// RawData encoding;
             dataSetReaderAllTypes.KeyFrameCount = 1;
-            
+
             jsonDataSetReaderMessage = new JsonDataSetReaderMessageDataType() {
                 NetworkMessageContentMask = (uint)(JsonNetworkMessageContentMask.NetworkMessageHeader
                         | JsonNetworkMessageContentMask.DataSetMessageHeader
