@@ -49,9 +49,9 @@ namespace Quickstarts.ConsoleReferencePublisher
 
             // command line options
             bool showHelp = false;
-            bool useMqttJson = true;
+            bool useMqttJson = false;
             bool useMqttUadp = false;
-            bool useUdpUadp = false;
+            bool useUdpUadp = true;
             string publisherUrl = null;
 
             Mono.Options.OptionSet options = new Mono.Options.OptionSet {
@@ -99,7 +99,7 @@ namespace Quickstarts.ConsoleReferencePublisher
                     // set default UDP Publisher Url to local multi-cast if not sent in args.
                     if (string.IsNullOrEmpty(publisherUrl))
                     {
-                        publisherUrl = "opc.udp://127.0.0.1:4840";
+                        publisherUrl = "opc.udp://224.0.2.15:4840";
                     }
 
                     // Create configuration using UDP protocol and UADP Encoding
@@ -259,13 +259,13 @@ namespace Quickstarts.ConsoleReferencePublisher
             // Define PublishedDataSet AllTypes
             PublishedDataSetDataType publishedDataSetAllTypes = CreatePublishedDataSetAllTypes();
 
-            //create  the PubSub configuration root object
+            //create the PubSub configuration root object
             PubSubConfigurationDataType pubSubConfiguration = new PubSubConfigurationDataType();
-            pubSubConfiguration.Connections = new PubSubConnectionDataTypeCollection()
+            pubSubConfiguration.Connections = new PubSubConnectionDataTypeCollection() // Pub Configuration
                 {
-                    pubSubConnection1
+                    pubSubConnection1 // Including writerGroup1 -> dataSetWriter1|dataSetWriter2
                 };
-            pubSubConfiguration.PublishedDataSets = new PublishedDataSetDataTypeCollection()
+            pubSubConfiguration.PublishedDataSets = new PublishedDataSetDataTypeCollection() // Pub Content
                 {
                     publishedDataSetSimple, publishedDataSetAllTypes
                 };
@@ -533,7 +533,7 @@ namespace Quickstarts.ConsoleReferencePublisher
         private static PublishedDataSetDataType CreatePublishedDataSetSimple()
         {
             PublishedDataSetDataType publishedDataSetSimple = new PublishedDataSetDataType();
-            publishedDataSetSimple.Name = "Simple"; //name shall be unique in a configuration
+            publishedDataSetSimple.Name = "Simple"; // name shall be unique in a configuration
             // Define  publishedDataSetSimple.DataSetMetaData
             publishedDataSetSimple.DataSetMetaData = new DataSetMetaDataType();
             publishedDataSetSimple.DataSetMetaData.DataSetClassId = Uuid.Empty;
@@ -592,7 +592,7 @@ namespace Quickstarts.ConsoleReferencePublisher
                     });
             }
 
-            publishedDataSetSimple.DataSetSource = new ExtensionObject(publishedDataSetSimpleSource);
+            publishedDataSetSimple.DataSetSource = new ExtensionObject(publishedDataSetSimpleSource); // Source -> Fields
 
             return publishedDataSetSimple;
         }

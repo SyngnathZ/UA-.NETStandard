@@ -57,9 +57,9 @@ namespace Quickstarts.ConsoleReferenceSubscriber
 
             // command line options
             bool showHelp = false;
-            bool useMqttJson = true;
+            bool useMqttJson = false;
             bool useMqttUadp = false;
-            bool useUdpUadp = false;
+            bool useUdpUadp = true;
             string subscriberUrl = null;
 
             Mono.Options.OptionSet options = new Mono.Options.OptionSet {
@@ -108,7 +108,7 @@ namespace Quickstarts.ConsoleReferenceSubscriber
                     // set default UDP Subscriber Url to local multicast if not sent in args.
                     if (string.IsNullOrEmpty(subscriberUrl))
                     {
-                        subscriberUrl = "opc.udp://127.0.0.1:4840";
+                        subscriberUrl = "opc.udp://224.0.2.15:4840";
                     }
 
                     // Create configuration using UDP protocol and UADP Encoding
@@ -594,7 +594,7 @@ namespace Quickstarts.ConsoleReferenceSubscriber
         }
 
         /// <summary>
-        /// Creates a Subscriber PubSubConfiguration object for UDP & UADP programmatically.
+        /// Creates a Subscriber PubSubConfiguration object for MQTT & UADP programmatically.
         /// </summary>
         /// <returns></returns>
         private static PubSubConfigurationDataType CreateSubscriberConfiguration_MqttUadp(string urlAddress)
